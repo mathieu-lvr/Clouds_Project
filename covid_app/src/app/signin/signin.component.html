@@ -1,0 +1,155 @@
+<div class="text-center">
+    <div class="mb-3">
+        <h1>Covid19 Live Evolution</h1>
+        <p>Follow the evolution of the virus around the world</p>
+        <img 
+            style="width: 50%"
+            src="https://firebasestorage.googleapis.com/v0/b/covid-fdb64.appspot.com/o/Mask_Hero_Contest_557x223.jpg?alt=media&token=77eeed9c-e4ae-4586-8151-07d5893eb8d7" 
+            alt="mask image">
+    </div>
+    <button class="btn btn-info my-3" (click)="covidDataService.signInWithGoogle()">Sign In with Google to Add News</button>
+    
+    <div *ngIf="check" class ="my-9">
+
+        <div class="my-3">
+            <h5> 5 Most Recent Users News</h5>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>News Title</th>
+                        <th>Username</th>
+                        <th>News Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td> {{news1.title}}</td>
+                        <td>  {{news1.username}} </td>
+                        <td>{{ news1.description }}</td>
+                    </tr>
+                    <tr >
+                        <td> {{ news2.title }}  </td>
+                        <td>  {{news2.username}} </td>
+                        <td>{{ news2.description }}</td>
+                    </tr>
+                    <tr >
+                        <td> {{ news3.title }}  </td>
+                        <td>  {{news3.username}} </td>
+                        <td>{{ news3.description }}</td>
+                    </tr>
+                    <tr >
+                        <td> {{ news4.title }}  </td>
+                        <td>  {{news4.username}} </td>
+                        <td>{{ news4.description }}</td>
+                    </tr>
+                    <tr >
+                        <td> {{ news5.title }}  </td>
+                        <td>  {{news5.username}} </td>
+                        <td>{{ news5.description }}</td>
+                    </tr>
+            
+            
+                    
+                </tbody>
+            
+            </table>
+            </div> 
+
+        
+        <h5>Corona Virus Summary Worldwide</h5>
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                  <td class="table-warning">Total Cases</td>
+                  <td class="table-warning">{{summary.TotalConfirmed}}</td>
+                </tr>
+                <tr>
+                  <td class="table-warning">New Cases</td>
+                  <td class="table-warning">{{summary.NewConfirmed}}</td>
+                </tr>
+                <tr>
+                    <td class="table-warning">Active Cases</td>
+                    <td class="table-warning">{{summary.TotalConfirmed-summary.TotalDeaths-summary.TotalRecovered}}</td>
+                  </tr>
+                  <tr>
+                    <td class="table-primary">Total Recovered</td>
+                    <td class="table-primary">{{summary.TotalRecovered}}</td>
+                  </tr>
+                  <tr>
+                    <td class="table-primary">New Recovered</td>
+                    <td class="table-primary">{{summary.NewRecovered}}</td>
+                  </tr>
+                  <tr>
+                    <td class="table-primary">Recovery Rate</td>
+                    <td class="table-primary">{{summary.TotalRecovered/summary.TotalConfirmed}}</td>
+                  </tr>
+                  <tr>
+                    <td class="table-danger"> Total Deaths</td>
+                    <td class="table-danger">{{summary.TotalDeaths}}</td>
+                  </tr>
+                  <tr>
+                    <td class="table-danger">New Deaths</td>
+                    <td class="table-danger">{{summary.NewDeaths}}</td>
+                  </tr>
+                  <tr>
+                    <td class="table-danger">Mortality Rate</td>
+                    <td class="table-danger">{{summary.TotalDeaths/summary.TotalConfirmed}}</td>
+                  </tr>
+        </table>
+
+    
+      
+      <div class="chart-wrapper my-5">
+        <h5>Corona Virus Cases Distribution Worldwide</h5>
+        <canvas baseChart 
+        [data]="pieChartData" 
+        [labels]="pieChartLabels" 
+        [chartType]="pieChartType"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins"
+        [legend]="pieChartLegend">
+      </canvas>
+        </div>
+
+        <div class="chart-wrapper my-5">
+        <h5>Daily Corona Virus Cases Worldwide</h5>
+        <canvas baseChart 
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+        </div>
+        <div class="chart-wrapper my-5">
+        <h5>Total Corona Virus Cases Worldwide</h5>
+        <canvas baseChart 
+            [datasets]="lineChartData" 
+            [labels]="lineChartLabels" 
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend" 
+            [chartType]="lineChartType" 
+            [plugins]="lineChartPlugins">
+        </canvas>
+        </div>
+    
+    
+    </div>
+
+    <div>
+        
+        <app-country-data></app-country-data>
+
+    </div>
+</div>
+
+
+
+<footer class="text-center">
+    <p>Data Source :
+    <a href="https://covid19api.com/">covid19api /</a>
+    <a href="https://github.com/CSSEGISandData/COVID-19"> Johns Hopkins CSSE</a> </p>
+  </footer>
+
+  

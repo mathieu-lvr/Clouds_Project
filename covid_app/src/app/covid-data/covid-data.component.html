@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-sm-6">
+        <h3>{{ user.displayName }}</h3>
+    
+    </div>
+    <div class="col-sm-6 text-right">
+        <button class="btn btn-danger" (click)="covidDataService.signOut()">Sign Out</button>
+    </div>
+</div>
+<div class="my-3">
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Date</th>
+            <th>Title</th>
+            <th>News Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let news of news">
+            <td>{{ news.username }}</td>
+            <td>{{ news.date.toDate() }}</td>
+            <td> {{ news.title }}  </td>
+            <td>{{ news.description }}</td>
+        </tr>
+
+
+        
+    </tbody>
+
+</table>
+</div>
+
+<app-add-covid-data></app-add-covid-data>
